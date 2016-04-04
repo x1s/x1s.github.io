@@ -1,107 +1,502 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="x1s" ng-controller="initController">
 <head>
   <meta charset="utf-8">
-  <title>x1s homepage</title>
-  <style type="text/css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{user.info.name}}</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+<style>
 
-body {
-  background-color: black;
-  background-image: url(fire-ultra-cool.gif);
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: 90px;
-  text-align: center;
-  color: white;
+  a {
+    text-decoration: none;
+    color: #336699;
+  }
+  a:hover {
+    color: #336699;
+    text-decoration: underline;
+  }
+  body {
+    border-top: 2px solid  #336699;
+    background-color: white;
+    color: #666666;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    margin: 0;
+  }
+  body > section {
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+  header {
+    position: relative;
+  }
+  body > nav {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    border-top: 2px solid  #336699;
+    top: 0;
+    background-color: rgba(255,255,255,.9);
+    z-index: 999;
+    display: none;
+  }
+  header,  #education, #experience, #interests, #skills  {
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+  }
+  h2 {
+    font-weight: 400;
+    margin: 10px 0;
+  }
+  h1 small {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  h3 small {
+    color: #999999;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  article {
+    border-bottom: 1px solid #efefef;
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px 0;
+    display: block;
+  }
+  article:last-child {
+    border: 0;
+  }
+  article > div > ul {
+    margin: 10px 0 0 0;
+  }
+  section > ul {
+    display: block;
+  }
+  #education h3, p {
+    margin: 0;
+  }
+  #experience h3, p {
+    margin: 0;
+  }
+  #experience h3 {
+    margin-bottom: 20px;
+  }
+  footer .vcard {
+    margin: 20px 0;
+  }
+  footer .vcard .email {
+    display: block;
+  }
+  footer > nav {
+    float: right;
+    text-align: right;
+  }
+  footer > nav > a {
+    display: block;
+  }
+@media print {
+  body > nav {
+    display: none !important;
+  }
+  article {
+    display: block;
+  }
+  section > ul {
+    display: block;
+  }
 }
-
-h1  {
-  color: green;
-  margin: 20px 0 5px 0;
-}
-
-h2 {
-  color: red;
-  margin: 5px 0;
-}
-h3 {
-  margin: 5px 0;
-}
-
-ul  {
-text-align: left;
-}
-
-nav {
-  padding-top: 10px;
-  width: 300px;
-  margin: 0 auto;
-}
-
-#image img {
-  height: 200px;
-  cursor: pointer;
-}
-
-nav img {
-  height: 38px;
-}
-  </style>
+</style>
 </head>
 <body>
-
-<header>
-  <h1>Pedro Ivo Branquinho Gimenes <small>(x1s)</small></h1>
-  <h2>Professional Web and Mobile Programmer</h2>
-  <h3>Welcome to my brand new Home Page</h3>
-  <div id="image"></div>
-</header>
-
-
-
 <nav>
-  <b>Projects</b>
-  <ul>
-    <li><a href="#" title="Must think a better name, hum?">Blog</a> <img src="under-construction-power-cool.gif"></li>
-    <li><a href="http://gsapp.me" title="Sell and by, easy like that" target="_blank">Garagesaleapp.me</a></li>
-    <li><a href="http://fotogram.us" title="Instagram photos printed directly from your event" target="_blank">Fotogram</a></li>
-    <li><a href="http://mosma.co" title="Real working going on" target="_blank">MoSMA</a></li>
-    <li><a href="#" title="You may help improve the world">Dedo Duro</a> <img src="under-construction-power-cool.gif"></li>
-  </ul>
-<hr>
-  <b>Something more</b>
-  <ul>
-    <li><a href="http://twitter.com/x1s" target="_blank" title="Lotta talk">Twitter</a></li>
-    <li><a href="https://github.com/x1s" title="Some code?">Github</a></li>
-    <li><a href="http://http://br.linkedin.com/in/pedroivobgimenes" title="Backlog" target="_blank">Linkedin</a></li>
-    <li><a href="mailto:pedroivo[@]x1s.eti.br" title="Talk to me :-}" target="_blank">Email</a> <img src="email-power.gif"></li>
-  </ul>
+  <a href="#interests">Interests</a>
+  <a href="#skills">Skills</a>
+  <a href="#education">Education</a>
+  <a href="#experience">Experience</a>
 </nav>
 
+<section>
+  <header>
+    <h1>
+      {{user.info.name}}
+      <small>
+        <a href="mailto:{{user.info.email}}">{{user.info.email}}</a>
+      </small>
+    </h1>
+    <p>{{user.info.summary}}</p>
+  </header>
 
-<footer>
-You're the <img src="counter-mega-cool.gif"> visitor. Thanks for stopping by ;)
-</footer>
+  <section id="interests">
+    <h2>Interests</h2>
+    <p>{{user.info.interests}}</p>
+  </section>
 
-<br><br><br><br><br><br>
-<script type="text/javascript">
-var container = document.getElementById("image");
-var img = ["baby-ultra-cool.gif", "hummm-ok.gif", "awesome-clockwork.gif" , 
-            "great-bel-air.gif", "ultra-hamster.gif", "power-outch.gif",
-            "hungry-owl.gif"];
-container.innerHTML = "<img src='"+img[Math.floor(Math.random()*img.length)]+"' title='Refresh it now!' id='prettygif'>";
-var reload_img = document.getElementById("prettygif");
-reload_img.onclick = reload;
-function reload() { reload_img.src = img[Math.floor(Math.random()*img.length)];}
-</script>
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li ng-repeat="skill in user.info.skills">
+        {{skill.title}}
+        <ul>
+          <li ng-repeat="item in skill.items">{{item}}</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <article ng-repeat="school in user.education">
+      <h3>
+        <small>{{school.period}}</small>
+      </h3>
+      <p>{{school.description}} @ <a href="{{school.url}}">{{school.name}}</a></p>
+    </article>
+  </section>
+  <section id="experience">
+    <h2>Experience</h2>
+    <article ng-repeat="company in user.experience">
+      <h3>
+        <small>{{company.period}}</small>
+        {{company.position}} @
+        <span ng-if="!company.url">
+          {{company.name}}
+        </span>
+        <span ng-if="company.url">
+          <a href="{{company.url}}" target="_blank">{{company.name}}</a>
+        </span>
+      </h3>
+      <p>{{company.description}}</p>
+      <div ng-if="company.projects.length > 0">
+        <ul>
+          <li ng-repeat="project in company.projects">{{project}}</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <nav>
+      <a href="{{user.info.url}}">{{user.info.url}}</a>
+      <a href="{{user.info.github}}">{{user.info.github}}</a>
+      <a href="{{user.info.linkedin}}">{{user.info.linkedin}}</a>
+    </nav>
+    <div id='hcard-{{user.info.name_key}}' class="vcard">
+      <a class="url fn n" href="{{user.info.url}}">
+        <span class="given-name">{{user.info.given_name}}</span>
+        <span class="additional-name">{{user.info.additional_name}}</span>
+        <span class="family-name">{{user.info.family_name}}</span>
+      </a>
+      <a class="email" href="mailto:{{user.info.email}}">
+        {{user.info.email}}
+      </a>
+      <div class="adr">
+        <span class="locality">{{user.info.city}}</span>
+        <span class="country-name">{{user.info.country}}</span>
+      </div>
+      <div class="tel">{{user.info.phone}}</div>
+    </div>
+  </footer>
+</section>
+
+
+
+
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+(function() {
+var x1sApp = angular.module('x1s', []);
+x1sApp.controller('initController',['$scope', initController])
 
-  ga('create', 'UA-36482728-10', 'x1s.eti.br');
-  ga('send', 'pageview');
+function initController($scope) {
+  console.log("Welcome to my humble site, Have you heard about Genial References? Google that!!!");
+  $scope.user = data;
+}
 
+})();
+
+var data = {
+  info: {
+    given_name: 'Pedro Ivo',
+    additional_name: 'Branquinho',
+    family_name: 'Gimenes',
+    name: 'Pedro Ivo Branquinho Gimenes',
+    name_key: 'Pedro-Ivo-Branquinho-Gimenes',
+    email: 'pedro@genial.tech',
+    url: 'http://pedro.genial.tech',
+    github: 'http://github.com/x1s',
+    linkedin: 'https://www.linkedin.com/in/pedroivobgimenes',
+    summary: "After a decade working in many different areas, technologies, and really good \
+     teams I've realized that solving problems drives my work, either a simple website to\
+     publish a resume or a bank hub integration, I always try to explore the problem and evolve a simple \
+     yet efficient solution focusing on quality and stability.",
+
+    interests: "As a developer, my main interest is to learn, debate and work with technologies that may improve the solution I'm working on. As a individual my goal is always work with other people and organizations that understand the importance of the technology, the technology itself and, most of all, always working to make a difference. \
+      I can contribute many levels of web and mobile development, however, work to solve backend problems always flows better.",
+    skills: [
+      {
+        title: 'Core Skills',
+        items: [
+          'Software Engineering',
+          'TDD (Test-Driven Development)',
+          "REST API's",
+          "Experienced with system operation being a long time *nix operator/user"
+        ]
+      },
+      {
+        title: 'Programming Languages',
+        items: [
+          'Javascript, Ruby, Java, PHP',
+          'Shell Scripting'
+        ]
+      },
+      {
+        title: 'Databases & In-memory data store',
+        items: [
+          'PostgreSQL, MySQL, Oracle',
+          'ElasticSearch',
+          'Redis, Memcache'
+        ]
+      },
+      {
+        title: 'UI / UX',
+        items: [
+          'Good notions of web design',
+          'HTML5, CSS3'
+        ]
+      },
+      {
+        title: 'Javascript Tooling & Frameworks',
+        items: [
+          'AngularJS, Backbone',
+          'JQuery',
+          'Jasmine, Karma',
+          'Node.js',
+          'Hapi.js, Express',
+          'NPM'
+        ]
+      },
+      {
+        title: 'Ruby Tooling & Frameworks',
+        items: [
+          'Rails, Sinatra',
+          'RSpec, Minitest',
+          'Rack middleware',
+          'Gems development',
+          'Capistrano'
+        ]
+      },
+      {
+        title: 'Java Tooling & Frameworks',
+        items: [
+          'Java EE',
+          'Spring MVC, Struts, Drools',
+          'JBoss, Tomcat, Glassfish',
+          'Hibernate'
+        ]
+      },
+    ],
+    phone:  '+351 915 652 071',
+    city: 'Lisbon',
+    country: 'Portugal'
+  },
+  education: [
+    {
+      name: 'ISCTE - Lisbon University',
+      location: 'Lisbon, PT',
+      description: 'Master in Open Source Software',
+      period: '2010',
+      url: 'http://moss.dcti.iscte.pt/'
+    },
+    {
+      name: 'Castelo Branco University',
+      location: 'Rio de Janeiro, BR',
+      description: 'Specialization in Institutional Communication Management',
+      period: '2008',
+      url: 'http://www.castelobranco.br/'
+    },
+    {
+      name: 'Salgado de Oliveira University',
+      location: 'Goiânia, BR',
+      description: 'Specialization in Computer Networks',
+      period: '2005',
+      url: 'http://www.universo.edu.br/'
+    },
+    {
+      name: 'Catholic University of Goias',
+      location: 'Goiânia, BR',
+      description: 'Bachelor in Computer Sciences',
+      period: '2002',
+      url: 'http://www.ucg.br/'
+    }
+  ],
+  experience: [
+    {
+      name: 'Genial Reference',
+      position: 'Partner & Developer',
+      description: "Part of a team of consultants highly focused in quality and efficiency.",
+      projects: [
+        'oKivia (okivia.io) - Node.js, Elasticsearch, Postgresql'
+      ],
+      period: 'Apr 2016 - Present',
+      location: 'Lisbon, PT',
+      url: 'http://genial.tech'
+    },
+    {
+      name: 'Passworks',
+      position: 'Ruby Developer',
+      description: "Passworks help companies to deliver marketing campaigns into user's \
+       mobile devices by using the passbook/wallets, geolocation and beacons technologies.\
+       My first job was to suggest improvements for the code styling, tests and deployment \
+       processes.",
+      period: 'Mar 2016 - Present',
+      location: 'Lisbon, PT',
+      url: 'http://passworks.io'
+    },
+    {
+      name: 'Fotogram',
+      position: 'Partner & Developer',
+      description: "The company provides the service of printing pictures posted on the Instagram \
+       by the guests of a specific event. My role was to develop and maintain the application and\
+       the infrastructure. First created in Ruby/Rails then after validating the concepts the code \
+       recreate the whole stack using Node.js with Express",
+      period: 'Dez 2012 - Present',
+      location: 'BR, PT, ES',
+      url: 'http://fotogram.us'
+    },
+    {
+      name: 'Coacher',
+      position: 'CTO',
+      description: "Coacher aimed to create a whole technology platform for soccer coaches \
+       with web and mobile applications. I started as a Faber consultant when my job was to set up \
+       the project API for the iPad application, then joined as CTO and we delivered the new versions \
+       for web, iPhone and a free app for coaches draw their drills.",
+      period: 'Jul 2015 - Mar 2016',
+      location: 'Lisbon, PT',
+      url: 'http://joincoacher.com'
+    },
+    {
+      name: 'Faber Ventures',
+      position: 'Ruby Developer',
+      description: "Along with the internal tech team, my job was to bootstrap projects for \
+      some companies joining Faber's portfolio:",
+      projects: [
+       "Sabe Online",
+       "Chick By Choice",
+       "Coacher",
+       "Advice Front",
+      ],
+      period: 'Oct 2013 - Jul 2015',
+      location: 'Lisbon, PT',
+      url: 'http://faber-ventures.com'
+    },
+    {
+      name: 'MoSMA',
+      position: 'Partner & Developer',
+      description: "The agency was created after some friends and I decided to create one \
+       small project for studying some technologies and processes, then we came up with another \
+       pet project and end up assisting some clients with design, marketing, web and  \
+       mobile development.",
+      projects: [
+        "Garagesale App (gsapp.me) - PHP, Zend Framework, MySQL",
+        "Alerta Cidadão (avisacidadao.pt) - Node.js, Postgresql, Kue"
+      ],
+      period: 'Mar 2011 - Feb 2016',
+      location: 'São Paulo, BR',
+      url: 'https://www.facebook.com/mosmapp'
+    },
+    {
+      name: 'Not In California',
+      position: 'Ruby Developer',
+      description: "The company got a project with the Corporate Action Network to rewrite their \
+       whole application to Ruby on Rails. My job was to bootstrap the project and develop a set \
+       of initial features.",
+      period: 'Fev 2013 - Oct 2013',
+      location: 'Goiânia, BR',
+      url: 'http://notincalifornia.com/'
+    },
+    {
+      name: 'Condex',
+      position: 'Frontend Developer',
+      description: "The company has just created a Windows/Desktop application for drawing and debate \
+       over BPMN charts. My job was to create the web version using Backbone.js integrated \
+       with the internal API.",
+      period: 'Fev 2012 - Oct 2012',
+      location: 'Goiânia, BR',
+      url: 'http://www.condex.inf.br/'
+    },
+    {
+      name: 'Indra Portugal',
+      position: 'Java Developer',
+      description: "Part of the team who created the 3 main Portuguese harbours Management  \
+       Software. My role was to develop and maintain features using Java/JSF.",
+      period: 'Dec 2010 - Oct 2011',
+      location: 'Lisbon, PT',
+      url: 'http://www.indracompany.com/'
+    },
+    {
+      name: 'SIBS Processos',
+      position: 'Java Developer',
+      description: "During the creation of the new software for the SEPA, the company \
+       decided to use a new IBM product called DataPower to operate as a first gateway \
+       and transformation layer. My job was to configure and integrate the middleware \
+       with the internal infrastructure (Web Services, Queues, Databases)",
+      period: 'Mar 2010 - Dec 2010',
+      location: 'Lisbon, PT',
+      url: 'http://www.sibs-sgps.pt/'
+    },
+    {
+      name: 'Portugal Social Security',
+      position: 'Java Developer',
+      description: "The project was to create a new communication layer for filter \
+       and transform data formats between the Institute and the national banks. My job was \
+       to create the Web Services (EJB) and manage the communication (JMS+WebSphere) with the \
+       internal services.",
+      period: 'Jan 2009 - Mar 2010',
+      location: 'Lisbon, PT',
+      url: 'http://www.seg-social.pt/'
+    },
+    {
+      name: 'Unimix Tecnologies',
+      position: 'Java Developer',
+      description: "The company was a Oracle Representative and I was part of the development \
+       team, specializing in Oracle products and proposing solutions for the clients issues. \
+       During this time I've mainly worked in two projects:",
+      projects: [
+        "State's Public Security Application (Java+Struts+Oracle)",
+        "Military Health Application (Java+Drools)"
+      ],
+      period: 'Jan 2007 - Oct 2008',
+      location: 'Brasília, BR',
+      url: ''
+    },
+    {
+      name: 'Quantic Systems',
+      position: 'Java Developer',
+      description: "After the company create a online and POS system for a fastfood chain \
+       using only Oracle solutions they decided to rewrite a lighter version of the solution using \
+       Postgresql and Java (Jsp/Struts). My job was to create the web application for assemble and buy sandwiches online.",
+      period: 'Jan 2004 - Oct 2006',
+      location: 'Goiânia, BR',
+      url: ''
+    },
+    {
+      name: 'Web do Brasil',
+      position: 'Web Developer (Intern)',
+      description: "This was a agency that created dozens of institutional websites and small web applications.  \
+       As a intern my job was to take the design and develop those sites using HTML, CSS, JS and PHP",
+      period: 'Jul 2001 - Set 2003',
+      location: 'Goiânia, BR',
+      url: ''
+    },
+  ]
+}
 </script>
 </body>
 </html>
